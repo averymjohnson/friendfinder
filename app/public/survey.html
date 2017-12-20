@@ -188,9 +188,25 @@
   </div>
 
   <script type="text/javascript">
- 
-    $("#submit").on("click", function(event) {
+
+      $("#submit").on("click", function(event) {
       event.preventDefault();
+      
+       function validateForm() {
+        var isValid = true;
+        $(".form-control").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+        $(".choice").each(function() {
+          if ($(this).val() === "") {
+            isValid = false;
+          }
+        });
+        return isValid;
+      }
+      if (validateForm()) {
 
         var userData = {
           name: $("#name").val(),
@@ -218,7 +234,7 @@
 
           $("#results-modal").modal("toggle");
         });
-    });
+    };
   </script>
 
 </body>
